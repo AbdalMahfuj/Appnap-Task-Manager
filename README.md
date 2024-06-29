@@ -5,15 +5,15 @@
 
 
 ### iOS Framework: UIKit
-## Design pattern used: MVVM
-## Language: Swift
-## Local database: CoreData for CRUD
-## Remote Database: https://crudcrud.com/
-## Third party libraries: 
+### Design pattern used: MVVM
+### Language: Swift
+### Local database: CoreData for CRUD
+### Remote Database: https://crudcrud.com/
+### Third party libraries: 
 * IQKeyboardManager for Keyboard Done, cancel button to hide keyboard
 * NVActivityIndicatorView for Showing loader
 
-## For Unit testing, used Apple's XCTest Framework.
+### For Unit testing, used Apple's XCTest Framework.
 
 
 # App’s Overview:
