@@ -4,19 +4,21 @@
 # Task Management App
 
 
-### iOS Framework: UIKit
-### Design pattern used: MVVM
+### IDE: XCode 15.1
 ### Language: Swift
+### UI Framework: UIKit
+### Architecture: MVVM
+### Minimum OS: iOS 15.0
 ### Local database: CoreData for CRUD
 ### Remote Database: https://crudcrud.com/
+### Unit Test Framewrok: Apple's XCTest Framework
 ### Third party libraries: 
 * IQKeyboardManager for Keyboard Done, cancel button to hide keyboard
 * NVActivityIndicatorView for Showing loader
 
-### For Unit testing, used Apple's XCTest Framework.
 
 
-# App’s Overview:
+# App's Overview:
 * App contains only three screens.
 * In first screen user sees list tasks s/he created.
 * On tap of any task, user navigate to task details screen, where s/he can update or delete the task.
@@ -27,7 +29,6 @@
 
 
 # How Sync works:
-
 * For storing data locally Core Data used. 
 * Any changes made, store that in local DB.
 * For syncing data, I used crudcrud.com. 
