@@ -9,8 +9,8 @@
 ### UI Framework: UIKit
 ### Architecture: MVVM
 ### Minimum OS: iOS 15.0
-### Local database: CoreData for CRUD
-### Remote Database: https://crudcrud.com/
+### Local Database: CoreData
+### Remote Server: https://crudcrud.com/
 ### Unit Test Framewrok: Apple's XCTest Framework
 ### Third party libraries: 
 * IQKeyboardManager for Keyboard Done, cancel button to hide keyboard
