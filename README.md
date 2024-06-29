@@ -23,7 +23,7 @@
 * In first screen user sees list tasks s/he created.
 * On tap of any task, user navigate to task details screen, where s/he can update or delete the task.
 * From the first/home screen, user can navigate to new task screen. Where task will be created by user’s given information.
-* The task contains 5 different info. Title, Description, Task Status, Created-Date, Updated-Date & Due-Date.
+* The task contains 5 different info. Title, Description, Task completion Status, Created-Date, Updated-Date & Due-Date.
 * Based on due date task list will be sorted and will show accordingly in list view.
 * All the task created store onto local Db and let know the remote server about the local changes by sync mechanism.
 
