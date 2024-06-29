@@ -39,12 +39,12 @@ class DBManager: TaskDBService {
     }
     
     func getNotDeletedTasks()->[TaskModel] {
-        return getData(entity: "TaskMO", predicate: NSPredicate(format: "NOT status = %d", ChangeStatus.deleted.rawValue)) as! [TaskModel]
+        return getData(entity: "TaskMO", predicate: NSPredicate(format: "NOT changeStatus = %d", ChangeStatus.deleted.rawValue)) as! [TaskModel]
     }
     
     func getLastNotSyncTask()->TaskModel? {
         let sort = NSSortDescriptor(key: "updatedDateTimeStamp", ascending: true)
-        return getData(entity: "TaskMO", predicate: NSPredicate(format: "NOT status = %d", ChangeStatus.synced.rawValue), sorts: [sort]).first  as? TaskModel
+        return getData(entity: "TaskMO", predicate: NSPredicate(format: "NOT changeStatus = %d", ChangeStatus.synced.rawValue), sorts: [sort]).first  as? TaskModel
     }
     
     
@@ -59,7 +59,7 @@ class DBManager: TaskDBService {
     
     @discardableResult
     func updateTaskAsSync(id: String)->Bool {
-        return updateData(entity: "TaskMO", predicate: NSPredicate(format: "id = %@", id), updateKey: "status", updateValue: ChangeStatus.synced.rawValue)
+        return updateData(entity: "TaskMO", predicate: NSPredicate(format: "id = %@", id), updateKey: "changeStatus", updateValue: ChangeStatus.synced.rawValue)
     }
     
     @discardableResult
@@ -74,7 +74,7 @@ class DBManager: TaskDBService {
     
     @discardableResult
     func softDeleteTask(id: String)->Bool {
-        return updateData(entity: "TaskMO", predicate: NSPredicate(format: "id = %@", id), updateKey: "status", updateValue: ChangeStatus.deleted.rawValue)
+        return updateData(entity: "TaskMO", predicate: NSPredicate(format: "id = %@", id), updateKey: "changeStatus", updateValue: ChangeStatus.deleted.rawValue)
     }
     
     

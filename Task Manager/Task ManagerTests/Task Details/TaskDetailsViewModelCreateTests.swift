@@ -61,7 +61,7 @@ final class TaskDetailsViewModelCreateTests: XCTestCase {
     func test_TaskDetails_Create_With_No_DB_Data() throws {
         service.mockObjectFile = nil
         
-        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date())
+        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date(), status: 0)
         
         XCTAssertEqual(self.service.tasks.count, 1, "DB should have 1 item")
     }
@@ -69,7 +69,7 @@ final class TaskDetailsViewModelCreateTests: XCTestCase {
     func test_TaskDetails_Create_With_DB_Data() throws {
         service.mockObjectFile = "Tasks"
         
-        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date())
+        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date(), status: 0)
         
         XCTAssertEqual(self.service.tasks.count, 4, "DB should have 4 items")
     }

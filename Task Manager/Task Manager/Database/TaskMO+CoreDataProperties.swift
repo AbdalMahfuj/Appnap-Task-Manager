@@ -23,6 +23,7 @@ extension TaskMO {
     @NSManaged public var createdDateTimeStamp: NSNumber
     @NSManaged public var updatedDateTimeStamp: NSNumber
     @NSManaged public var dueDateTimeStamp: NSNumber
+    @NSManaged public var changeStatus: NSNumber
     @NSManaged public var status: NSNumber
 
     
@@ -35,6 +36,7 @@ extension TaskMO {
         createdDateTimeStamp = entity.createdDateTimeStamp as NSNumber
         updatedDateTimeStamp = entity.updatedDateTimeStamp as NSNumber
         dueDateTimeStamp = entity.dueDateTimeStamp as NSNumber
+        changeStatus = entity.changeStatus as NSNumber
         status = entity.status as NSNumber
     }
 }

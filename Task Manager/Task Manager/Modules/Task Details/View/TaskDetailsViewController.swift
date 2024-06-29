@@ -15,6 +15,7 @@ class TaskDetailsViewController: UIViewController {
     @IBOutlet private var dueDateTextField: UITextField!
     @IBOutlet private var addUpdateButton: UIButton!
     @IBOutlet private var expireLabel: UILabel!
+    @IBOutlet private var statusSwitch: UISwitch!
 
     private var dueDatePicker: UIDatePicker!
 
@@ -76,12 +77,16 @@ class TaskDetailsViewController: UIViewController {
             
             dueDatePicker.date = task.dueDate
             textFieldDidEndEditing(dueDateTextField)
+            
+            statusSwitch.setOn(task.status == 1, animated: true)
         }
         else {
             titleTextField.text = ""
             detailsTextView.text = ""
             addUpdateButton.setTitle("Create Task", for: .normal)
             expireLabel.text = ""
+            
+            statusSwitch.setOn(false, animated: true)
         }
         
         textViewDidChange(detailsTextView)
@@ -109,6 +114,7 @@ class TaskDetailsViewController: UIViewController {
         }
     }
     
+
     
     @IBAction func createAction() {
         validateAndCreateTask()
@@ -164,7 +170,7 @@ extension TaskDetailsViewController {
             return
         }
         
-        viewModel.createOrUpdateTask(title: title, detail: details, dueDate: dueDatePicker.date)
+        viewModel.createOrUpdateTask(title: title, detail: details, dueDate: dueDatePicker.date, status: statusSwitch.isOn ? 1 : 0)
     }
 }
 

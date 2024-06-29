@@ -37,7 +37,7 @@ class TaskDBServiceMock: TaskDBService {
     
     func updateTask(_ toDo: TaskModel)->Bool {
         if let firstObjc = tasks.first(where: { $0.id == toDo.id }) {
-            firstObjc.update(title: toDo.title, details: toDo.details, dueDate: toDo.dueDate)
+            firstObjc.update(title: toDo.title, details: toDo.details, dueDate: toDo.dueDate, status: toDo.status)
             return true
         }
         else {
@@ -72,7 +72,7 @@ class TaskDBServiceMock: TaskDBService {
     
     func updateTaskAsSync(id: String) -> Bool {
         if let firstObjc = tasks.first(where: { $0.id == id }) {
-            firstObjc.updateStatus(.synced)
+            firstObjc.updateChangeStatus(.synced)
             return true
         }
         else {
@@ -82,7 +82,7 @@ class TaskDBServiceMock: TaskDBService {
     
     func softDeleteTask(id: String) -> Bool {
         if let firstObjc = tasks.first(where: { $0.id == id }) {
-            firstObjc.updateStatus(.deleted)
+            firstObjc.updateChangeStatus(.deleted)
             return true
         }
         else {

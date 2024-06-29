@@ -12,6 +12,7 @@ class TaskListItemTableCell: UITableViewCell {
     @IBOutlet private var mainView: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var dueDateLabel: UILabel!
+    @IBOutlet private var statusLabel: UILabel!
     @IBOutlet private var nextImageView: UIImageView!
 
     
@@ -32,6 +33,9 @@ class TaskListItemTableCell: UITableViewCell {
             dueDateLabel.text = "Expired"
             dueDateLabel.textColor = .systemRed
         }
+        
+        statusLabel.text = toDo.status == 1 ? "Completed" : "Ongoing"
+        statusLabel.textColor = toDo.status == 1 ? .systemCyan : .systemBrown
     }
   
 }

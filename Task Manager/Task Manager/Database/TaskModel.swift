@@ -17,7 +17,8 @@ class TaskModel: NSObject, CodableModel {
     private(set) var details: String
     private(set) var updatedDateTimeStamp: Int
     private(set) var dueDateTimeStamp: Int
-    private(set) var status: Int = ChangeStatus.synced.rawValue
+    private(set) var changeStatus: Int = ChangeStatus.synced.rawValue
+    private(set) var status: Int
 
    
     lazy var createdDate: Date = {
@@ -63,10 +64,11 @@ class TaskModel: NSObject, CodableModel {
         case createdDateTimeStamp
         case updatedDateTimeStamp
         case dueDateTimeStamp
+        case changeStatus
         case status
     }
     
-    init(id: String? = nil, title: String, details: String, dueDate: Date){
+    init(id: String? = nil, title: String, details: String, dueDate: Date, status: Int){
         self.id = id ?? UUID().uuidString
         self.remoteId = ""
         self.createdDateTimeStamp = Int(Date().timeIntervalSince1970)
@@ -74,7 +76,8 @@ class TaskModel: NSObject, CodableModel {
         self.dueDateTimeStamp = Int(dueDate.timeIntervalSince1970)
         self.title = title
         self.details = details
-        self.status = ChangeStatus.created.rawValue
+        self.changeStatus = ChangeStatus.created.rawValue
+        self.status = status
     }
     
     
@@ -86,6 +89,7 @@ class TaskModel: NSObject, CodableModel {
         self.createdDateTimeStamp = managed.createdDateTimeStamp.intValue
         self.updatedDateTimeStamp = managed.updatedDateTimeStamp.intValue
         self.dueDateTimeStamp = managed.dueDateTimeStamp.intValue
+        self.changeStatus = managed.changeStatus.intValue
         self.status = managed.status.intValue
     }
     
@@ -94,31 +98,36 @@ class TaskModel: NSObject, CodableModel {
         self.remoteId = ""
         self.title = dictionary["title"] as? String ?? ""
         self.details = dictionary["details"] as? String ?? ""
+        self.status = dictionary["status"] as? Int ?? 0
         createdDateTimeStamp = dictionary["createdDateTimeStamp"] as? Int ?? 0
         updatedDateTimeStamp = dictionary["updatedDateTimeStamp"] as? Int ?? 0
         dueDateTimeStamp = dictionary["dueDateTimeStamp"] as? Int ?? 0
     }
     
-    func update(title: String, details: String, dueDate: Date){
+    func update(title: String, details: String, dueDate: Date, status: Int){
         self.title = title
         self.details = details
         self.dueDateTimeStamp = Int(dueDate.timeIntervalSince1970)
         self.updatedDateTimeStamp = Int(Date().timeIntervalSince1970)
-        self.status = ChangeStatus.updated.rawValue
+        self.changeStatus = ChangeStatus.updated.rawValue
+        self.status = status
     }
     
     func updateRemoteId(_ id: String){
         remoteId = id
     }
     
-    func updateStatus(_ status: ChangeStatus){
-        self.status = status.rawValue
+    func updateChangeStatus(_ status: ChangeStatus){
+        self.changeStatus = status.rawValue
     }
+
     
     var toDictionary: [String: Any] {
         ["id": id,
          "title": title,
          "details": details,
+         "status": status,
+         "changeStatus": changeStatus,
          "createdDateTimeStamp": createdDateTimeStamp,
          "updatedDateTimeStamp": updatedDateTimeStamp,
          "dueDateTimeStamp": dueDateTimeStamp]

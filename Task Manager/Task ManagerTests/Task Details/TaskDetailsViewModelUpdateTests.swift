@@ -19,7 +19,7 @@ final class TaskDetailsViewModelUpdateTests: XCTestCase {
         try super.setUpWithError()
         
         service = TaskDBServiceMock()
-        task = TaskModel(id: "102030", title: "Test Title", details: "Test Details", dueDate: Date())
+        task = TaskModel(id: "102030", title: "Test Title", details: "Test Details", dueDate: Date(), status: 00)
         sut = TaskDetailsViewModel(service: service, task: task)
     }
 
@@ -64,7 +64,7 @@ final class TaskDetailsViewModelUpdateTests: XCTestCase {
     func test_TaskDetails_Update_With_No_DB_Data() throws {
         service.mockObjectFile = nil
         
-        sut.createOrUpdateTask(title: "Another Test Title", detail: "Another Test Details", dueDate: Date())
+        sut.createOrUpdateTask(title: "Another Test Title", detail: "Another Test Details", dueDate: Date(), status: 0)
         
         XCTAssertEqual(self.service.tasks.count, 0, "DB should not have any item")
     }
@@ -72,7 +72,7 @@ final class TaskDetailsViewModelUpdateTests: XCTestCase {
     func test_TaskDetails_Update_With_DB_Data() throws {
         service.mockObjectFile = "Tasks"
         
-        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date())
+        sut.createOrUpdateTask(title: "Test Title", detail: "Test Details", dueDate: Date(), status: 0)
         
         XCTAssertEqual(self.service.tasks.count, 3, "DB should have 3 items")
     }

@@ -28,9 +28,9 @@ class TaskDetailsViewModel {
     // Insert or update the task based on the task existence.
     // Update: Commit the changes to the local DB. And Let know the Sync Manager about the changes.
     // Insert: Insert the task to the local DB. And Let know the Sync Manager about the creation.
-    func createOrUpdateTask(title: String, detail: String, dueDate: Date){
+    func createOrUpdateTask(title: String, detail: String, dueDate: Date, status: Int){
         if let task {
-            task.update(title: title, details: detail, dueDate: dueDate)
+            task.update(title: title, details: detail, dueDate: dueDate, status: status)
             
             let updated = dbService.updateTask(task)
             
@@ -43,7 +43,7 @@ class TaskDetailsViewModel {
             }
         }
         else {
-            let task = TaskModel(title: title, details: detail, dueDate: dueDate)
+            let task = TaskModel(title: title, details: detail, dueDate: dueDate, status: status)
             
             let inserted = dbService.insertTask(task)
             

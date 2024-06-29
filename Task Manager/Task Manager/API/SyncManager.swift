@@ -124,7 +124,7 @@ extension SyncManager {
         
         guard let task = DBManager.shared.getLastNotSyncTask() else { return }
                 
-        switch ChangeStatus(rawValue: task.status) {
+        switch ChangeStatus(rawValue: task.changeStatus) {
         case .created:
             taskCreated(task)
             
