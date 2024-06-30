@@ -12,6 +12,7 @@
 ### Local Database: CoreData
 ### Remote Server: https://crudcrud.com/
 ### Unit Test Framewrok: Apple's XCTest Framework
+### Demonstrating the app’s features in Video: https://drive.google.com/file/d/1u9MHwv9F93HCo_KIrvPNFwrRsllMFGAc/view?usp=drive_link
 ### Third party libraries: 
 * IQKeyboardManager for Keyboard Done, cancel button to hide keyboard
 * NVActivityIndicatorView for Showing loader
